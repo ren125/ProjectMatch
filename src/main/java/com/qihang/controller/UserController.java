@@ -17,7 +17,17 @@ public class UserController {
     public String query(Model model){
         model.addAttribute("username","阿龙");
         model.addAttribute("password","along");
-        return "test";
+        return "header";
+    }
+
+    @RequestMapping("/daohang")
+    public String daohang(Model model){
+        return "daohang";
+    }
+
+    @RequestMapping("/start")
+    public String start(Model model){
+        return "start";
     }
 
     @RequestMapping("/query")

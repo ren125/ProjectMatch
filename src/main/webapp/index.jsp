@@ -6,7 +6,6 @@
     <meta name="renderer" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-    <script src="static/js/vue.js"></script>
     <script src="static/js/jquery-1.10.2.min.js"></script>
     <%--<link rel="stylesheet" type="text/css" href="http://unpkg.com/iview/dist/styles/iview.css">--%>
     <script type="text/javascript" src="static/js/vue.js"></script>
