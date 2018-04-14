@@ -22,8 +22,11 @@
 <jsp:include page="/user/test"></jsp:include>
 <div class="down-main">
     <jsp:include page="/user/daohang"></jsp:include>
-    <div class="right-product right-off">
+    <div id = "PJTable" class="right-product right-off">
+        <table border :columns="columns7" :data="data6"></table>
     </div>
 </div>
+<script src="static/js/myjs/index.js"></script>
 </body>
+
 </html>
