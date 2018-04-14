@@ -43,7 +43,7 @@ var vm = new Vue({
                 },
                 dataType:"json",
                 success: function (data) {
-                    window.location.href="/user/test";
+                    window.location.href="/user/start";
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                     alert("用户名密码错误");
