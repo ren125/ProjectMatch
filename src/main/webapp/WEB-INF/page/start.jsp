@@ -17,16 +17,19 @@
     <script src="../../static/js/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="../../static/js/jquery.cookie.js" type="text/javascript"></script>
     <script src="../../static/bootstrap-3.3.5-dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../../static/js/vue.js"></script>
+    <script type="text/javascript" src="../../static/js/iview-min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/css/iview.css">
 </head>
 <body>
 <jsp:include page="/user/test"></jsp:include>
 <div class="down-main">
     <jsp:include page="/user/daohang"></jsp:include>
     <div id = "PJTable" class="right-product right-off">
-        <table border :columns="columns7" :data="data6"></table>
+        <i-table border :columns="columns1" :data="data1"></i-table>
     </div>
 </div>
-<script src="static/js/myjs/index.js"></script>
+<script src="../../static/js/myjs/projectTable.js"></script>
 </body>
 
 </html>

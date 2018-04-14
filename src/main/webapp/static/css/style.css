@@ -34,7 +34,7 @@ body{font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragin
 .left-full{ width:160px; display:block;}
 .right-full{ left:160px;}
 /* .left-off{ width:48px; display:block;} */
-.right-off{ left:48px;}
+.right-off{ left:160px;}
 .right-product{position: absolute;top: 0px;bottom: 0px;right: 0px;background: #FFF;}
 /*.left-main{ bottom: 0px; top:0px; position:absolute; background-color:#293038;}*/
 .left-main{ bottom: 0px; top:50px; z-index:100; position:fixed; background-color:#293038;}
