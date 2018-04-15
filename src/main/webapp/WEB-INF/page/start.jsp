@@ -26,10 +26,10 @@
 <div class="down-main">
     <jsp:include page="/user/daohang"></jsp:include>
     <div id = "PJTable" class="right-product right-off">
-        <i-table border :columns="columns1" :data="data1"></i-table>
+        <i-table border :columns="columns7" :data="data6"></i-table>
+        <script src="../../static/js/myjs/projectTable.js"></script>
     </div>
 </div>
-<script src="../../static/js/myjs/projectTable.js"></script>
 </body>
 
 </html>
