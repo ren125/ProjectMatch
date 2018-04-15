@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qihang.dao.ProjectDao" >
+    <resultMap id="BaseResultMap" type="com.qihang.pojo.Project" ><!--对应的实体类位置 -->
+        <result column="pro_id" property="pro_id" jdbcType="INTEGER" />
+        <result column="pro_name" property="pro_name" jdbcType="VARCHAR" />
+        <result column="pro_employer" property="pro_employer" jdbcType="INTEGER" />
+        <result column="pro_field" property="pro_field" jdbcType="VARCHAR" />
+        <result column="pro_skill1" property="pro_skill1" jdbcType="INTEGER" />
+        <result column="pro_skill2" property="pro_skill2" jdbcType="INTEGER" />
+        <result column="pro_money" property="pro_money" jdbcType="DECIMAL" />
+        <result column="pro_applylastdate" property="pro_applylastdate" jdbcType="DATETIME" />
+        <result column="pro_overview" property="pro_overview" jdbcType="TEXT" />
+        <result column="pro_satus" property="pro_satus" jdbcType="INTEGER" />
+    </resultMap>
+
+    <select id="selectProject" resultMap="BaseResultMap">
+        SELECT
+        *
+        FROM project
+    </select>
+
+</mapper>

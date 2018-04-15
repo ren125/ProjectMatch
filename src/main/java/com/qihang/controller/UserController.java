@@ -1,7 +1,10 @@
 package com.qihang.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.qihang.pojo.Project;
 import com.qihang.pojo.user;
 import com.qihang.services.userService;
+import com.qihang.services.ProjectService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class UserController {
     @Autowired
     private userService userService;
+    private ProjectService projectService;
 
     @RequestMapping("/test")
     public String query(Model model){
@@ -49,6 +53,19 @@ public class UserController {
             return user;
         }else{
             return null;
+        }
+    }
+
+
+    @RequestMapping(value = "/showPJ",method = RequestMethod.GET)
+    @ResponseBody
+    public String showPJ(){
+        Project[] projects = projectService.queryProject();
+        if(projects==null){
+            return "";
+        }
+        else{
+            return JSON.toJSONString(projects);
         }
     }
 
