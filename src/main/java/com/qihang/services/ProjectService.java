@@ -2,6 +2,8 @@ package com.qihang.services;
 
 import com.qihang.pojo.Project;
 
+import java.util.ArrayList;
+
 public interface ProjectService {
-    public Project[] queryProject();
+    ArrayList<Project> selectProject();
 }

@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: 12571
-  Date: 2018/4/13
-  Time: 14:45
+  Date: 2018/4/20
+  Time: 19:42
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,7 +10,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
-    <title>起始页</title>
+    <title>登陆密码修改</title>
     <link href="${pageContext.request.contextPath}/static/bootstrap-3.3.5-dist/css/bootstrap.min.css" title="" rel="stylesheet" />
     <link title="" href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet" type="text/css"  />
     <link title="blue" href="${pageContext.request.contextPath}/static/css/dermadefault.css" rel="stylesheet" type="text/css"/>
@@ -21,22 +21,22 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/iview-min.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/iview.css">
     <style>
-        #right-part{
-            background-size: 100% 100%;
-            -moz-background-size: 100% 100%;
-            -webkit-background-size: 100% 100%;
-            background-image: url("/static/images/timg.jpg");
-            background-repeat: no-repeat;
+        .passwordModify{
+            margin-left: 150px;
+            margin-top: 50px;
         }
-        .welcome{
-            font-size: 36px;
-            margin-left: 85px;
-            margin-top: 5px;
+        .ivu-form-item-label{
+            font-size: 14px !important;
         }
-        .welcome2{
-            font-size: 36px;
-            margin-left: 90px;
-            margin-top: 5px;
+        .ivu-input{
+            font-size: 14px !important;
+        }
+        .ivu-card-head p{
+            font-size: 16px;
+        }
+        .passwordtip{
+            font-size: 12px;
+            margin-left: 269px;
         }
     </style>
 </head>
@@ -83,16 +83,16 @@
         <!-- <div class="sidebar-fold"><span class="glyphicon glyphicon-menu-hamburger"></span></div> -->
         <div class="subNavBox">
             <div class="sBox">
-                <div class="subNav sublist-up"><span class="title-icon glyphicon glyphicon-chevron-up"></span><span class="sublist-title">用户中心</span>
+                <div class="subNav sublist-down"><span class="title-icon glyphicon glyphicon-chevron-down"></span><span class="sublist-title">用户中心</span>
                 </div>
-                <ul class="navContent" style="display:none">
+                <ul class="navContent" style="display:block">
                     <li>
                         <%-- class="active"<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />个人信息</div>--%>
                         <a href="/user/info"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">个人信息</span></a> </li>
                     <li>
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />信息修改</div>--%>
                         <a href="/user/infoModify"><span class="sublist-icon glyphicon glyphicon-envelope"></span><span class="sub-title">信息修改</span></a> </li>
-                    <li>
+                    <li class="active">
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />密码修改</div>--%>
                         <a href="/user/passwordModify"><span class="sublist-icon glyphicon glyphicon-credit-card"></span><span class="sub-title">密码修改</span></a></li>
                     <li>
@@ -151,21 +151,38 @@
         })
     </script>
     <div id="right-part" class="right-product right-off">
-        <div class="welcome">欢</div>
-        <div class="welcome">迎&nbsp开</div>
-        <div class="welcome">入&nbsp启</div>
-        <div class="welcome">驻&nbsp您</div>
-        <div class="welcome">启&nbsp的</div>
-        <div class="welcome">航&nbsp梦</div>
-        <div class="welcome">号&nbsp想</div>
-        <%--<div class="welcome">&nbsp&nbsp&nbsp&nbsp&nbsp启</div>--%>
-        <%--<div class="welcome">&nbsp&nbsp&nbsp&nbsp&nbsp航</div>--%>
-        <div class="welcome2">&nbsp&nbsp&nbsp&nbsp之</div>
-        <div class="welcome2">&nbsp&nbsp&nbsp&nbsp旅</div>
+        <div id="container">
+            <Card style="width:100%;height: 100%" :bordered="false" :shadow=false>
+                <p slot="title">修改登陆密码</p>
+                <i-form class="passwordModify" :model="formItem" :label-width="120" :rules="ruleInline" >
+                    <form-item label="原密码" prop="password">
+                        <i-input type="password" style="width: 380px" v-model="formItem.password"  placeholder="请输入原密码"></i-input>
+                    </form-item>
+                    <form-item label="新密码" prop="password1">
+                        <i-input type="password" style="width: 380px" v-model="formItem.password1"  placeholder="请输入新密码"></i-input>
+                    </form-item>
+                    <form-item label="确认密码" prop="password2">
+                        <i-input type="password" style="width: 380px" v-model="formItem.password2"  placeholder="请再次输入新密码"></i-input>
+                    </form-item>
+                    <form-item>
+                        <i-button type="primary" @click="commit()">确定</i-button>
+                    </form-item>
+                </i-form>
+
+                <div class="passwordtip">
+                    如何设置高强度密码？<br/>
+                    1、6-16个字符，建议包含大小字母，数字，特殊字符<br/>
+
+                    2、密码不建议包含账号、邮箱或手机号<br/>
+
+                    3、不建议使用连续或重复的数字/字母作为密码<br/>
+                </div>
+            </Card>
+        </div>
     </div>
 </div>
 </body>
-
+<script src="${pageContext.request.contextPath}/static/js/myjs/passwordModify.js"></script>
 </html>
 <%--<i-table border :columns="columns7" :data="data6"></i-table>--%>
 <%--<script src="../../static/js/myjs/projectTable.js"></script>--%>

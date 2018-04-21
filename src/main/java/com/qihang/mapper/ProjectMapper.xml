@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.qihang.dao.ProjectDao" >
+    <resultMap id="BaseResultMap" type="com.qihang.pojo.Project" >
+        <id column="pro_id" property="proId" jdbcType="INTEGER" />
+        <result column="pro_name" property="proName" jdbcType="VARCHAR" />
+        <result column="pro_employer" property="proEmployer" jdbcType="VARCHAR" />
+        <result column="pro_field" property="proField" jdbcType="VARCHAR" />
+        <result column="pro_skill1" property="proSkill1" jdbcType="INTEGER" />
+        <result column="pro_skill2" property="proSkill2" jdbcType="INTEGER" />
+        <result column="pro_money" property="proMoney" jdbcType="DECIMAL" />
+        <result column="pro_lastdate" property="proLastdate" jdbcType="TIMESTAMP" />
+        <result column="pro_overview" property="proOverview" jdbcType="LONGVARCHAR" />
+        <result column="pro_satus" property="proSatus" jdbcType="INTEGER" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        pro_id, pro_name, pro_employer, pro_field, pro_skill1, pro_skill2, pro_money, pro_lastdate,pro_overview,pro_satus
+    </sql>
+
+    <select id="selectProject" resultMap="BaseResultMap" >
+        select
+        <include refid="Base_Column_List" />
+        from project
+
+    </select>
+
+</mapper>

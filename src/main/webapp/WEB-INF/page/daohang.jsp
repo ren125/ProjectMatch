@@ -11,25 +11,25 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
     <title>navigation</title>
-    <link href="../../static/bootstrap-3.3.5-dist/css/bootstrap.min.css" title="" rel="stylesheet" />
-    <link title="" href="../../static/css/style.css" rel="stylesheet" type="text/css"  />
-    <link title="blue" href="../../static/css/dermadefault.css" rel="stylesheet" type="text/css"/>
-    <script src="../../static/js/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script src="../../static/js/jquery.cookie.js" type="text/javascript"></script>
-    <script src="../../static/bootstrap-3.3.5-dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <link href="${pageContext.request.contextPath}/static/bootstrap-3.3.5-dist/css/bootstrap.min.css" title="" rel="stylesheet" />
+    <link title="" href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet" type="text/css"  />
+    <link title="blue" href="${pageContext.request.contextPath}/static/css/dermadefault.css" rel="stylesheet" type="text/css"/>
+    <script src="${pageContext.request.contextPath}/static/js/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/static/js/jquery.cookie.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/static/bootstrap-3.3.5-dist/js/bootstrap.min.js" type="text/javascript"></script>
 </head>
 <body>
 <div class="left-main left-full">
     <!-- <div class="sidebar-fold"><span class="glyphicon glyphicon-menu-hamburger"></span></div> -->
     <div class="subNavBox">
         <div class="sBox">
-            <div class="subNav sublist-down"><span class="title-icon glyphicon glyphicon-chevron-down"></span><span class="sublist-title">用户中心</span>
+            <div class="subNav sublist-up"><span class="title-icon glyphicon glyphicon-chevron-up"></span><span class="sublist-title">用户中心</span>
             </div>
-            <ul class="navContent" style="display:block">
+            <ul class="navContent" style="display:none">
                 <li>
-                    <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />个人信息</div>--%>
+                    <%-- class="active"<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />个人信息</div>--%>
                     <a href="userInfo.html"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">个人信息</span></a> </li>
-                <li class="active">
+                <li>
                     <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />信息修改</div>--%>
                     <a href="message.html"><span class="sublist-icon glyphicon glyphicon-envelope"></span><span class="sub-title">信息修改</span></a> </li>
                 <li>

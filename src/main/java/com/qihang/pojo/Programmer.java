@@ -1,124 +1,44 @@
 package com.qihang.pojo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "programmer")
 public class Programmer {
+    private String pId;
 
-    @Column(name = "p_id")
-    int pId;
+    private String pPassword;
 
-    @Column(name = "p_name")
-    String pName;
+    private String pName;
 
-    @Column(name = "p_age")
-    int pAge;
+    private String pSex;
 
-    @Column(name = "p_phone")
-    String pPhone;
+    public String getpSex() {
+        return pSex;
+    }
 
-    @Column(name = "p_qq")
-    String pQQ;
+    public void setpSex(String pSex) {
+        this.pSex = pSex;
+    }
 
-    @Column(name = "hoursalary")
-    int hourSalary;
+    private Integer pAge;
 
-    @Column(name = "work_field")
-    String workField;
+    private Integer education;
 
-    @Column(name = "work_experience")
-    String workExperience;
+    private String pPhone;
 
-    @Column(name = "over_score")
-    double overScore;
+    private String pEmail;
 
-    @Column(name = "p_username")
-    String pUsername;
+    private Long hoursalary;
 
-    @Column(name = "p_password")
-    String pPassword;
+    private String workField;
 
-    public int getpId() {
+    private Integer workExperience;
+
+    private Long overScore;
+
+    public String getpId() {
         return pId;
     }
 
-    public void setpId(int pId) {
-        this.pId = pId;
-    }
-
-    public String getpName() {
-        return pName;
-    }
-
-    public void setpName(String pName) {
-        this.pName = pName;
-    }
-
-    public int getpAge() {
-        return pAge;
-    }
-
-    public void setpAge(int pAge) {
-        this.pAge = pAge;
-    }
-
-    public String getpPhone() {
-        return pPhone;
-    }
-
-    public void setpPhone(String pPhone) {
-        this.pPhone = pPhone;
-    }
-
-    public String getpQQ() {
-        return pQQ;
-    }
-
-    public void setpQQ(String pQQ) {
-        this.pQQ = pQQ;
-    }
-
-    public int getHourSalary() {
-        return hourSalary;
-    }
-
-    public void setHourSalary(int hourSalary) {
-        this.hourSalary = hourSalary;
-    }
-
-    public String getWorkField() {
-        return workField;
-    }
-
-    public void setWorkField(String workField) {
-        this.workField = workField;
-    }
-
-    public String getWorkExperience() {
-        return workExperience;
-    }
-
-    public void setWorkExperience(String workExperience) {
-        this.workExperience = workExperience;
-    }
-
-    public double getOverScore() {
-        return overScore;
-    }
-
-    public void setOverScore(double overScore) {
-        this.overScore = overScore;
-    }
-
-    public String getpUsername() {
-        return pUsername;
-    }
-
-    public void setpUsername(String pUsername) {
-        this.pUsername = pUsername;
+    public void setpId(String pId) {
+        this.pId = pId == null ? null : pId.trim();
     }
 
     public String getpPassword() {
@@ -126,6 +46,78 @@ public class Programmer {
     }
 
     public void setpPassword(String pPassword) {
-        this.pPassword = pPassword;
+        this.pPassword = pPassword == null ? null : pPassword.trim();
+    }
+
+    public String getpName() {
+        return pName;
+    }
+
+    public void setpName(String pName) {
+        this.pName = pName == null ? null : pName.trim();
+    }
+
+    public Integer getpAge() {
+        return pAge;
+    }
+
+    public void setpAge(Integer pAge) {
+        this.pAge = pAge;
+    }
+
+    public Integer getEducation() {
+        return education;
+    }
+
+    public void setEducation(Integer education) {
+        this.education = education;
+    }
+
+    public String getpPhone() {
+        return pPhone;
+    }
+
+    public void setpPhone(String pPhone) {
+        this.pPhone = pPhone == null ? null : pPhone.trim();
+    }
+
+    public String getpEamil() {
+        return pEmail;
+    }
+
+    public void setpEmail(String pEmail) {
+        this.pEmail = pEmail == null ? null : pEmail.trim();
+    }
+
+    public Long getHoursalary() {
+        return hoursalary;
+    }
+
+    public void setHoursalary(Long hoursalary) {
+        this.hoursalary = hoursalary;
+    }
+
+    public String getWorkField() {
+        return workField;
+    }
+
+    public void setWorkField(String workField) {
+        this.workField = workField == null ? null : workField.trim();
+    }
+
+    public Integer getWorkExperience() {
+        return workExperience;
+    }
+
+    public void setWorkExperience(Integer workExperience) {
+        this.workExperience = workExperience;
+    }
+
+    public Long getOverScore() {
+        return overScore;
+    }
+
+    public void setOverScore(Long overScore) {
+        this.overScore = overScore;
     }
 }

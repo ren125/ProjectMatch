@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: 12571
-  Date: 2018/4/13
-  Time: 14:45
+  User: renzhuo
+  Date: 2018/4/19
+  Time: 21:48
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,7 +10,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
-    <title>起始页</title>
+    <title>个人信息</title>
     <link href="${pageContext.request.contextPath}/static/bootstrap-3.3.5-dist/css/bootstrap.min.css" title="" rel="stylesheet" />
     <link title="" href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet" type="text/css"  />
     <link title="blue" href="${pageContext.request.contextPath}/static/css/dermadefault.css" rel="stylesheet" type="text/css"/>
@@ -21,22 +21,23 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/iview-min.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/iview.css">
     <style>
-        #right-part{
-            background-size: 100% 100%;
-            -moz-background-size: 100% 100%;
-            -webkit-background-size: 100% 100%;
-            background-image: url("/static/images/timg.jpg");
-            background-repeat: no-repeat;
+        .ivu-card-head p{
+            font-size: 16px;
         }
-        .welcome{
-            font-size: 36px;
-            margin-left: 85px;
-            margin-top: 5px;
+        i.ivu-icon-ios-arrow-left{
+            margin-top: 8px;
         }
-        .welcome2{
-            font-size: 36px;
-            margin-left: 90px;
-            margin-top: 5px;
+        i.ivu-icon-ios-arrow-right{
+            margin-top: 8px;
+        }
+        .ivu-page-options-elevator input{
+            font-size: 14px;
+        }
+        .ivu-form-item{
+            margin-bottom: 12px;
+        }
+        .ivu-table-wrapper.ivu-table.ivu-table-border.ivu-table-header th{
+            font-size: 14px !important;
         }
     </style>
 </head>
@@ -94,16 +95,16 @@
                         <a href="/user/infoModify"><span class="sublist-icon glyphicon glyphicon-envelope"></span><span class="sub-title">信息修改</span></a> </li>
                     <li>
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />密码修改</div>--%>
-                        <a href="/user/passwordModify"><span class="sublist-icon glyphicon glyphicon-credit-card"></span><span class="sub-title">密码修改</span></a></li>
+                        <a href="smsInfo.html"><span class="sublist-icon glyphicon glyphicon-credit-card"></span><span class="sub-title">密码修改</span></a></li>
                     <li>
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />消息中心</div>--%>
                         <a href="/user/message"><span class="sublist-icon glyphicon glyphicon-bullhorn"></span><span class="sub-title">消息中心</span></a></li>
                 </ul>
             </div>
             <div class="sBox">
-                <div class="subNav sublist-up"><span class="title-icon glyphicon glyphicon-chevron-up"></span><span class="sublist-title">项目匹配</span></div>
-                <ul class="navContent" style="display:none">
-                    <li>
+                <div class="subNav sublist-down"><span class="title-icon glyphicon glyphicon-chevron-down"></span><span class="sublist-title">项目匹配</span></div>
+                <ul class="navContent" style="display:block">
+                    <li class="active">
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />添加新闻</div>--%>
                         <a href="/user/projectMarket"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">项目市场</span></a></li>
                     <li>
@@ -151,19 +152,70 @@
         })
     </script>
     <div id="right-part" class="right-product right-off">
-        <div class="welcome">欢</div>
-        <div class="welcome">迎&nbsp开</div>
-        <div class="welcome">入&nbsp启</div>
-        <div class="welcome">驻&nbsp您</div>
-        <div class="welcome">启&nbsp的</div>
-        <div class="welcome">航&nbsp梦</div>
-        <div class="welcome">号&nbsp想</div>
-        <%--<div class="welcome">&nbsp&nbsp&nbsp&nbsp&nbsp启</div>--%>
-        <%--<div class="welcome">&nbsp&nbsp&nbsp&nbsp&nbsp航</div>--%>
-        <div class="welcome2">&nbsp&nbsp&nbsp&nbsp之</div>
-        <div class="welcome2">&nbsp&nbsp&nbsp&nbsp旅</div>
+        <div id = "PJTable">
+            <Card style="width:100%;height: 100% " :bordered="false" :shadow=false>
+                <p slot="title">项目市场</p>
+                <i-form :label-width="120" >
+                    <form-item label="按领域筛选">
+                        <i-select style="width: 380px" v-model="fieldChoosed" @on-change="fieledChange" multiple filterable placeholder="按所属领域筛选（可多选）">
+                            <i-option v-for="item in fieldList" :value="item.value" :key="item.value">{{ item.label }}</i-option>
+                        </i-select>
+                    </form-item>
+                    <form-item label="按领技能筛选">
+                        <i-select style="width: 380px" v-model="skillChoosed" @on-change="skillChange" multiple filterable placeholder="按所需技能筛选（可多选）">
+                            <i-option v-for="item in skillList" :value="item.value" :key="item.value">{{ item.label }}</i-option>
+                        </i-select>
+                    </form-item>
+                    <form-item label="按领酬劳金额筛选">
+                        <div>
+                            <%--<Tag color="blue">酬劳</Tag>--%>
+                            <Icon type="social-yen"></Icon>
+                            <input-number style="width: 117px" :min="0" v-model="moneyValue1" :step = "100"></input-number>
+                            <Icon type="minus-round"></Icon>
+                            <input-number style="width: 117px" :min="0" v-model="moneyValue2" :step = "100"></input-number>
+                            <i-button @click="moneyConfirm">确定</i-button>
+                            <i-button @click="moneyClear">清空</i-button>
+                        </div>
+                    </form-item>
+                </i-form>
+                <%--<div style="margin: 10px;overflow: hidden">--%>
+                    <%--<i-select v-model="fieldChoosed" @on-change="fieledChange" multiple filterable placeholder="按所属领域筛选（可多选）">--%>
+                        <%--<i-option v-for="item in fieldList" :value="item.value" :key="item.value">{{ item.label }}</i-option>--%>
+                    <%--</i-select>--%>
+                <%--</div>--%>
+                <%--<div style="margin: 10px;overflow: hidden">--%>
+                    <%--<i-select v-model="skillChoosed" @on-change="skillChange" multiple filterable placeholder="按所需技能筛选（可多选）">--%>
+                        <%--<i-option v-for="item in skillList" :value="item.value" :key="item.value">{{ item.label }}</i-option>--%>
+                    <%--</i-select>--%>
+                <%--</div>--%>
+                <%--<div style="margin: 10px;overflow: hidden">--%>
+                    <%--<i-select v-model="satusChoosed" @on-change="satusChange" multiple filterable placeholder="按项目状态筛选（可多选）">--%>
+                        <%--<i-option v-for="item in satusList" :value="item.value" :key="item.value">{{ item.label }}</i-option>--%>
+                    <%--</i-select>--%>
+                <%--</div>--%>
+                <%--<div style="margin: 10px;overflow: hidden">--%>
+                    <%--<div style="float: left;">--%>
+                        <%--<Tag color="blue">酬劳</Tag>--%>
+                        <%--<Icon type="social-yen"></Icon>--%>
+                        <%--<input-number :min="0" v-model="moneyValue1" :step = "100"></input-number>--%>
+                        <%--<Icon type="minus-round"></Icon>--%>
+                        <%--<input-number :min="0" v-model="moneyValue2" :step = "100"></input-number>--%>
+                        <%--<i-button @click="moneyConfirm">确定</i-button>--%>
+                        <%--<i-button @click="moneyClear">清空</i-button>--%>
+                    <%--</div>--%>
+                    <%--&lt;%&ndash;<div style="float: right;">&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<Page :total="totalPage" :current="currentPage" @on-change="changePage" simple></Page>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+                <%--</div>--%>
+                <i-table style="height: 430px" :columns="columns" :data="datas" no-data-text = "没有满足条件的项目"></i-table>
+                <div style="float: right;margin-top: 5px;">
+                    <Page :total="totalPage" :current="1" @on-change="changePage" show-elevator></Page>
+                </div>
+            </Card>
+        </div>
     </div>
 </div>
+<script src="${pageContext.request.contextPath}/static/js/myjs/projectTable.js"></script>
 </body>
 
 </html>

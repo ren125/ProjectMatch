@@ -12,12 +12,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
     <title>header</title>
-    <link href="../../static/bootstrap-3.3.5-dist/css/bootstrap.min.css" title="" rel="stylesheet" />
-    <link title="" href="../../static/css/style.css" rel="stylesheet" type="text/css"  />
-    <link title="blue" href="../../static/css/dermadefault.css" rel="stylesheet" type="text/css"/>
-    <script src="../../static/js/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script src="../../static/js/jquery.cookie.js" type="text/javascript"></script>
-    <script src="../../static/bootstrap-3.3.5-dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <link href="${pageContext.request.contextPath}/static/bootstrap-3.3.5-dist/css/bootstrap.min.css" title="" rel="stylesheet" />
+    <link title="" href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet" type="text/css"  />
+    <link title="blue" href="${pageContext.request.contextPath}/static/css/dermadefault.css" rel="stylesheet" type="text/css"/>
+    <script src="${pageContext.request.contextPath}/static/js/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/static/js/jquery.cookie.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/static/bootstrap-3.3.5-dist/js/bootstrap.min.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -51,7 +51,7 @@
             </li>
             <li class="dropdown li-border"><a href="#" class="dropdown-toggle mystyle-color" data-toggle="dropdown">00000000@qq.com<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">退出</a></li>
+                    <li><a href="/programmer/sigout">退出</a></li>
                 </ul>
             </li>
         </ul>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qihang.dao.ProgrammerProjectDao" >
+    <sql id="Base_Column_List" >
+        p_id, p_password, p_name, p_sex, p_age, education, p_phone, p_email, hoursalary, work_field,
+        work_experience, over_score
+    </sql>
+
+    <select id="selectProjectInvite" resultType="map">
+        SELECT project_invite.e_id,project_invite.invite_date,project.pro_field,
+        project.pro_lastdate,project.pro_money,project.pro_name,project.pro_overview,project.pro_skill1,project.pro_skill2
+        FROM project_invite , project
+        WHERE  project_invite.p_id = #{pId,jdbcType=VARCHAR}
+        AND project_invite.pro_id = project.pro_id
+    </select>
+
+</mapper>

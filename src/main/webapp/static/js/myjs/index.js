@@ -15,7 +15,7 @@ var vm = new Vue({
             ],
             password: [
                 { required: true, message: '请输入密码', trigger: 'blur' },
-                { type: 'string', min: 6, message: 'The password length cannot be less than 6 bits', trigger: 'blur' }
+                { type: 'string', min: 6, message: '密码长度不能小于6位', trigger: 'blur' }
             ]
         },
         ruleInline2: {
@@ -24,7 +24,7 @@ var vm = new Vue({
             ],
             password2: [
                 { required: true, message: '请输入密码', trigger: 'blur' },
-                { type: 'string', min: 6, message: 'The password length cannot be less than 6 bits', trigger: 'blur' }
+                { type: 'string', min: 6, message: '密码长度不能小于6位', trigger: 'blur' }
             ]
         },
 
@@ -35,15 +35,21 @@ var vm = new Vue({
         login:function(){
             $.ajax({
                 type: 'GET',
-                url: "user/login",
+                url: "/programmer/login",
                 //contentType : "application/json;charset=UTF-8",
                 data:{
                     username:vm.formInline.username,
                     password:vm.formInline.password
                 },
-                dataType:"json",
+                dataType:"text",
                 success: function (data) {
-                    window.location.href="/user/start";
+                    if(data==="false"){
+                        alert("用户名密码错误");
+                    }else if(data==="true"){
+                        window.location.href="/user/start";
+                    }else {
+                        alert("用户名密码错误");
+                    }
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                     alert("用户名密码错误");
@@ -54,7 +60,7 @@ var vm = new Vue({
 
         },
         sigin:function(){
-
+            window.location.href="/programmer/toSigin";
         },
         sigin2:function(){
 

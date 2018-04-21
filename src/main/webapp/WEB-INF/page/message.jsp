@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: 12571
-  Date: 2018/4/13
-  Time: 14:45
+  User: renzhuo
+  Date: 2018/4/21
+  Time: 13:00
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,7 +10,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
-    <title>起始页</title>
+    <title>个人信息</title>
     <link href="${pageContext.request.contextPath}/static/bootstrap-3.3.5-dist/css/bootstrap.min.css" title="" rel="stylesheet" />
     <link title="" href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet" type="text/css"  />
     <link title="blue" href="${pageContext.request.contextPath}/static/css/dermadefault.css" rel="stylesheet" type="text/css"/>
@@ -21,22 +21,35 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/iview-min.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/iview.css">
     <style>
-        #right-part{
-            background-size: 100% 100%;
-            -moz-background-size: 100% 100%;
-            -webkit-background-size: 100% 100%;
-            background-image: url("/static/images/timg.jpg");
-            background-repeat: no-repeat;
+        .ivu-form-item-label{
+            font-size: 14px !important;
         }
-        .welcome{
-            font-size: 36px;
-            margin-left: 85px;
-            margin-top: 5px;
+        .ivu-input{
+            font-size: 14px !important;
         }
-        .welcome2{
-            font-size: 36px;
-            margin-left: 90px;
-            margin-top: 5px;
+        .ivu-input-number-input{
+            font-size: 14px !important;
+        }
+        .ivu-select-single .ivu-select-selection .ivu-select-placeholder, .ivu-select-single .ivu-select-selection .ivu-select-selected-value{
+            font-size: 14px !important;
+        }
+        .ivu-select-input{
+            font-size: 14px !important;
+        }
+        .ivu-btn{
+            font-size: 14px !important;
+        }
+        .ivu-card-head p{
+            font-size: 16px;
+        }
+        i.ivu-icon-ios-arrow-left{
+            margin-top: 8px;
+        }
+        i.ivu-icon-ios-arrow-right{
+            margin-top: 8px;
+        }
+        .ivu-page-options-elevator input{
+            font-size: 14px;
         }
     </style>
 </head>
@@ -83,9 +96,9 @@
         <!-- <div class="sidebar-fold"><span class="glyphicon glyphicon-menu-hamburger"></span></div> -->
         <div class="subNavBox">
             <div class="sBox">
-                <div class="subNav sublist-up"><span class="title-icon glyphicon glyphicon-chevron-up"></span><span class="sublist-title">用户中心</span>
+                <div class="subNav sublist-down"><span class="title-icon glyphicon glyphicon-chevron-down"></span><span class="sublist-title">用户中心</span>
                 </div>
-                <ul class="navContent" style="display:none">
+                <ul class="navContent" style="display:block">
                     <li>
                         <%-- class="active"<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />个人信息</div>--%>
                         <a href="/user/info"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">个人信息</span></a> </li>
@@ -95,7 +108,7 @@
                     <li>
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />密码修改</div>--%>
                         <a href="/user/passwordModify"><span class="sublist-icon glyphicon glyphicon-credit-card"></span><span class="sub-title">密码修改</span></a></li>
-                    <li>
+                    <li class="active">
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />消息中心</div>--%>
                         <a href="/user/message"><span class="sublist-icon glyphicon glyphicon-bullhorn"></span><span class="sub-title">消息中心</span></a></li>
                 </ul>
@@ -151,19 +164,18 @@
         })
     </script>
     <div id="right-part" class="right-product right-off">
-        <div class="welcome">欢</div>
-        <div class="welcome">迎&nbsp开</div>
-        <div class="welcome">入&nbsp启</div>
-        <div class="welcome">驻&nbsp您</div>
-        <div class="welcome">启&nbsp的</div>
-        <div class="welcome">航&nbsp梦</div>
-        <div class="welcome">号&nbsp想</div>
-        <%--<div class="welcome">&nbsp&nbsp&nbsp&nbsp&nbsp启</div>--%>
-        <%--<div class="welcome">&nbsp&nbsp&nbsp&nbsp&nbsp航</div>--%>
-        <div class="welcome2">&nbsp&nbsp&nbsp&nbsp之</div>
-        <div class="welcome2">&nbsp&nbsp&nbsp&nbsp旅</div>
+        <div id="container">
+            <Card style="width:100%;height: 100%" :bordered="false" :shadow=false>
+                <p slot="title">雇主邀请消息列表</p>
+                <i-table style="height:500px;" border :columns="columns" :data="datas" highlight-row></i-table>
+                <div style="float: right;margin-top: 10px;">
+                    <Page :total="totalPage" :current="1" @on-change="changePage" show-elevator></Page>
+                </div>
+            </Card>
+        </div>
     </div>
 </div>
+<script src="${pageContext.request.contextPath}/static/js/myjs/message.js"></script>
 </body>
 
 </html>

@@ -6,10 +6,10 @@
     <meta name="renderer" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-    <script src="static/js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="static/js/vue.js"></script>
-    <script type="text/javascript" src="static/js/iview-min.js"></script>
-    <link rel="stylesheet" type="text/css" href="static/css/iview.css">
+    <script src="../static/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="../static/js/vue.js"></script>
+    <script type="text/javascript" src="../static/js/iview-min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/iview.css">
     <style>
         body {
             margin: 0px;
@@ -83,6 +83,6 @@
         </Tabs>
     </div>
 </div>
-<script src="static/js/myjs/index.js"></script>
+<script src="../static/js/myjs/index.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
-  User: 12571
-  Date: 2018/4/13
+  User: renzhuo
+  Date: 2018/4/19
   Time: 14:45
   To change this template use File | Settings | File Templates.
 --%>
@@ -10,7 +10,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
-    <title>起始页</title>
+    <title>个人信息</title>
     <link href="${pageContext.request.contextPath}/static/bootstrap-3.3.5-dist/css/bootstrap.min.css" title="" rel="stylesheet" />
     <link title="" href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet" type="text/css"  />
     <link title="blue" href="${pageContext.request.contextPath}/static/css/dermadefault.css" rel="stylesheet" type="text/css"/>
@@ -21,22 +21,32 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/iview-min.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/iview.css">
     <style>
-        #right-part{
-            background-size: 100% 100%;
-            -moz-background-size: 100% 100%;
-            -webkit-background-size: 100% 100%;
-            background-image: url("/static/images/timg.jpg");
-            background-repeat: no-repeat;
+        .ivu-card-head p{
+            font-size: 16px;
         }
-        .welcome{
-            font-size: 36px;
-            margin-left: 85px;
-            margin-top: 5px;
+        .ivu-form-item{
+            margin-bottom: 12px;
         }
-        .welcome2{
-            font-size: 36px;
-            margin-left: 90px;
-            margin-top: 5px;
+        .ivu-form-item-label{
+            font-size: 14px !important;
+        }
+        .ivu-input{
+            font-size: 14px !important;
+        }
+        .ivu-input-number-input{
+            font-size: 14px !important;
+        }
+        .ivu-select-single .ivu-select-selection .ivu-select-placeholder, .ivu-select-single .ivu-select-selection .ivu-select-selected-value{
+            font-size: 14px !important;
+        }
+        .ivu-select-input{
+            font-size: 14px !important;
+        }
+        .ivu-btn{
+            font-size: 14px !important;
+        }
+        .form-left{
+            margin-left: 200px;
         }
     </style>
 </head>
@@ -83,10 +93,10 @@
         <!-- <div class="sidebar-fold"><span class="glyphicon glyphicon-menu-hamburger"></span></div> -->
         <div class="subNavBox">
             <div class="sBox">
-                <div class="subNav sublist-up"><span class="title-icon glyphicon glyphicon-chevron-up"></span><span class="sublist-title">用户中心</span>
+                <div class="subNav sublist-down"><span class="title-icon glyphicon glyphicon-chevron-down"></span><span class="sublist-title">用户中心</span>
                 </div>
-                <ul class="navContent" style="display:none">
-                    <li>
+                <ul class="navContent" style="display:block">
+                    <li class="active">
                         <%-- class="active"<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />个人信息</div>--%>
                         <a href="/user/info"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">个人信息</span></a> </li>
                     <li>
@@ -151,19 +161,56 @@
         })
     </script>
     <div id="right-part" class="right-product right-off">
-        <div class="welcome">欢</div>
-        <div class="welcome">迎&nbsp开</div>
-        <div class="welcome">入&nbsp启</div>
-        <div class="welcome">驻&nbsp您</div>
-        <div class="welcome">启&nbsp的</div>
-        <div class="welcome">航&nbsp梦</div>
-        <div class="welcome">号&nbsp想</div>
-        <%--<div class="welcome">&nbsp&nbsp&nbsp&nbsp&nbsp启</div>--%>
-        <%--<div class="welcome">&nbsp&nbsp&nbsp&nbsp&nbsp航</div>--%>
-        <div class="welcome2">&nbsp&nbsp&nbsp&nbsp之</div>
-        <div class="welcome2">&nbsp&nbsp&nbsp&nbsp旅</div>
+        <div id="container">
+            <Card style="width:100%;height: 100%" :bordered="false" :shadow=false>
+                <p slot="title"><%= session.getAttribute("userId")%>的个人信息</p>
+                <i-form class="form-left" :model="formItem" :label-width="120" >
+                    <form-item label="用户名">
+                        <i-input :readonly=true style="width: 380px" v-model="formItem.userId"  placeholder="请输入用户名"></i-input>
+                    </form-item>
+                    <form-item label="姓名">
+                        <i-input :readonly=true  style="width: 380px" v-model="formItem.name" placeholder="请输入您的姓名"></i-input>
+                    </form-item>
+                    <form-item label="性别年龄">
+                        <i-input :readonly=true style="width: 60px" v-model="formItem.sex"></i-input>
+                        <input-number :readonly=true style="width: 120px" :max="100" :min="18" v-model="formItem.age"></input-number>
+                    </form-item>
+                    <form-item label="学历" prop="education">
+                        <i-input :readonly=true style="width: 380px" v-model="formItem.education"  placeholder="请选择您的学历"></i-input>
+                    </form-item>
+                    <form-item label="电话号码">
+                        <i-input :readonly=true style="width: 380px" v-model="formItem.phone"  placeholder="请输入电话号码"></i-input>
+                    </form-item>
+                    <form-item label="邮箱">
+                        <i-input :readonly=true style="width:380px" v-model="formItem.email"  placeholder="请输入您的邮箱"></i-input>
+                    </form-item>
+                    <form-item label="时薪">
+                        <%--<i-input v-model="formItem.hoursalary"  placeholder="请输入您期望的时薪"></i-input>--%>
+                        <input-number :readonly=true :min="20" :step="20" v-model="formItem.hoursalary"></input-number>
+                    </form-item>
+                    <form-item label="工作领域" prop="workfield">
+                        <i-input :readonly=true style="width: 380px" v-model="formItem.workfield"  placeholder="选择您熟悉的工作领域"></i-input>
+                    </form-item>
+                    <form-item label="擅长技能和评分" prop="skill">
+                        <i-input :readonly=true style="width: 120px" v-model="formItem.skill1"></i-input><span style="margin-left: 20px;font-size: 18px;">{{formItem.skill1score}}</span><span style="font-size: 14px;">(100为满分)</span><br/>
+                        <i-input :readonly=true style="width: 120px;margin-top: 5px;" v-model="formItem.skill2"></i-input><span style="display: inline-block;margin-top:10px;margin-left: 20px;font-size: 18px;">{{formItem.skill2score}}</span><span style="font-size: 14px;">(100为满分)</span>
+                    </form-item>
+                    <form-item label="工作经验年数">
+                        <%--<i-input v-model="formItem.experience"  placeholder="请输入您的工作经验的年限"></i-input>--%>
+                        <input-number :readonly=true :max="30" :min="0" v-model="formItem.experience"></input-number>
+                    </form-item>
+                    <form-item label="综合评价">
+                        <%--<i-input v-model="formItem.experience"  placeholder="请输入您的工作经验的年限"></i-input>--%>
+                        <Rate style="margin-top: -7px;" disabled v-model="formItem.score">
+                        </Rate>
+                        <span style="color: #f5a623;font-size: 18px;margin-left: 5px;">{{formItem.score}}</span>
+                    </form-item>
+                </i-form>
+            </Card>
+        </div>
     </div>
 </div>
+<script src="${pageContext.request.contextPath}/static/js/myjs/programmerInfo.js"></script>
 </body>
 
 </html>

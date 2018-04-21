@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: 12571
-  Date: 2018/4/13
-  Time: 14:45
+  User: renzhuo
+  Date: 2018/4/19
+  Time: 18:11
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,7 +10,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
-    <title>起始页</title>
+    <title>个人信息修改</title>
     <link href="${pageContext.request.contextPath}/static/bootstrap-3.3.5-dist/css/bootstrap.min.css" title="" rel="stylesheet" />
     <link title="" href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet" type="text/css"  />
     <link title="blue" href="${pageContext.request.contextPath}/static/css/dermadefault.css" rel="stylesheet" type="text/css"/>
@@ -21,22 +21,32 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/iview-min.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/iview.css">
     <style>
-        #right-part{
-            background-size: 100% 100%;
-            -moz-background-size: 100% 100%;
-            -webkit-background-size: 100% 100%;
-            background-image: url("/static/images/timg.jpg");
-            background-repeat: no-repeat;
+        .ivu-card-head p{
+            font-size: 16px;
         }
-        .welcome{
-            font-size: 36px;
-            margin-left: 85px;
-            margin-top: 5px;
+        .ivu-form-item{
+            margin-bottom: 12px;
         }
-        .welcome2{
-            font-size: 36px;
-            margin-left: 90px;
-            margin-top: 5px;
+        .ivu-form-item-label{
+            font-size: 14px !important;
+        }
+        .ivu-input{
+            font-size: 14px !important;
+        }
+        .ivu-input-number-input{
+            font-size: 14px !important;
+        }
+        .ivu-select-single .ivu-select-selection .ivu-select-placeholder, .ivu-select-single .ivu-select-selection .ivu-select-selected-value{
+            font-size: 14px !important;
+        }
+        .ivu-select-input{
+            font-size: 14px !important;
+        }
+        .ivu-btn{
+            font-size: 14px !important;
+        }
+        .form-left{
+            margin-left: 200px;
         }
     </style>
 </head>
@@ -83,13 +93,13 @@
         <!-- <div class="sidebar-fold"><span class="glyphicon glyphicon-menu-hamburger"></span></div> -->
         <div class="subNavBox">
             <div class="sBox">
-                <div class="subNav sublist-up"><span class="title-icon glyphicon glyphicon-chevron-up"></span><span class="sublist-title">用户中心</span>
+                <div class="subNav sublist-down"><span class="title-icon glyphicon glyphicon-chevron-down"></span><span class="sublist-title">用户中心</span>
                 </div>
-                <ul class="navContent" style="display:none">
+                <ul class="navContent" style="display:block">
                     <li>
                         <%-- class="active"<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />个人信息</div>--%>
                         <a href="/user/info"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">个人信息</span></a> </li>
-                    <li>
+                    <li class="active">
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />信息修改</div>--%>
                         <a href="/user/infoModify"><span class="sublist-icon glyphicon glyphicon-envelope"></span><span class="sub-title">信息修改</span></a> </li>
                     <li>
@@ -151,19 +161,76 @@
         })
     </script>
     <div id="right-part" class="right-product right-off">
-        <div class="welcome">欢</div>
-        <div class="welcome">迎&nbsp开</div>
-        <div class="welcome">入&nbsp启</div>
-        <div class="welcome">驻&nbsp您</div>
-        <div class="welcome">启&nbsp的</div>
-        <div class="welcome">航&nbsp梦</div>
-        <div class="welcome">号&nbsp想</div>
-        <%--<div class="welcome">&nbsp&nbsp&nbsp&nbsp&nbsp启</div>--%>
-        <%--<div class="welcome">&nbsp&nbsp&nbsp&nbsp&nbsp航</div>--%>
-        <div class="welcome2">&nbsp&nbsp&nbsp&nbsp之</div>
-        <div class="welcome2">&nbsp&nbsp&nbsp&nbsp旅</div>
+        <div id="container">
+            <Card style="width:100%;height: 100%" :bordered="false" :shadow=false>
+                <p slot="title">信息修改</p>
+                <i-form class="form-left" :model="formItem" :label-width="140" >
+                    <form-item label="用户名(不可修改)">
+                        <i-input :readonly=true style="width: 380px" v-model="formItem.userId"  placeholder="请输入用户名"></i-input>
+                    </form-item>
+                    <form-item label="姓名(不可修改)">
+                        <i-input :readonly=true  style="width: 380px" v-model="formItem.name" placeholder="请输入您的姓名"></i-input>
+                    </form-item>
+                    <form-item label="性别年龄">
+                        <i-input :readonly=true style="width: 60px" v-model="formItem.sex"></i-input>
+                        <input-number style="width: 120px" :max="100" :min="18" v-model="formItem.age"></input-number>
+                    </form-item>
+                    <form-item label="学历(不可修改)" prop="education">
+                        <i-input :readonly=true style="width: 380px" v-model="formItem.education"  placeholder="请选择您的学历"></i-input>
+                    </form-item>
+                    <form-item label="电话号码">
+                        <i-input style="width: 380px" v-model="formItem.phone"  placeholder="请输入电话号码"></i-input>
+                    </form-item>
+                    <form-item label="邮箱">
+                        <auto-complete
+                                v-model="formItem.email"
+                                @on-search="emailSearch"
+                                placeholder="请输入您的邮箱"
+                                style="width:380px">
+                            <i-option v-for="item in emailData" :value="item" :key="item">{{ item }}</i-option>
+                        </auto-complete>
+                    </form-item>
+                    <form-item label="时薪">
+                        <%--<i-input v-model="formItem.hoursalary"  placeholder="请输入您期望的时薪"></i-input>--%>
+                        <input-number :min="20" :step="20" v-model="formItem.hoursalary"></input-number>
+                    </form-item>
+                    <form-item label="工作领域" prop="workfield">
+                        <i-select style="width: 380px" v-model="formItem.workfield" placeholder="选择您熟悉的工作领域">
+                            <i-option value="教育">教育</i-option>
+                            <i-option value="政府">政府</i-option>
+                            <i-option value="制造">制造</i-option>
+                            <i-option value="零售">零售</i-option>
+                            <i-option value="交通物流">交通物流</i-option>
+                            <i-option value="电力">电力</i-option>
+                            <i-option value="金融">金融</i-option>
+                            <i-option value="医疗">医疗</i-option>
+                            <i-option value="互联网">互联网</i-option>
+                        </i-select>
+                    </form-item>
+                    <form-item label="擅长技能" prop="skill">
+                        <i-select style="width: 380px" v-model="formItem.skill" filterable multiple placeholder="选择您最擅长的两个技能">
+                            <i-option v-for="item in skills" :value="item.value" :key="item.value">{{ item.label }}</i-option>
+                        </i-select>
+                    </form-item>
+                    <form-item label="工作经验年数">
+                        <%--<i-input v-model="formItem.experience"  placeholder="请输入您的工作经验的年限"></i-input>--%>
+                        <input-number :max="30" :min="0" v-model="formItem.experience"></input-number>
+                    </form-item>
+                    <form-item label="综合评价(不可修改)">
+                        <%--<i-input v-model="formItem.experience"  placeholder="请输入您的工作经验的年限"></i-input>--%>
+                        <Rate style="margin-top: -7px;" disabled v-model="formItem.score">
+                        </Rate>
+                        <span style="color: #f5a623;font-size: 18px;margin-left: 5px;">{{formItem.score}}</span>
+                    </form-item>
+                    <form-item>
+                        <i-button type="primary" @click="commit()">保存修改</i-button>
+                    </form-item>
+                </i-form>
+            </Card>
+        </div>
     </div>
 </div>
+<script src="${pageContext.request.contextPath}/static/js/myjs/userInfoModify.js"></script>
 </body>
 
 </html>
