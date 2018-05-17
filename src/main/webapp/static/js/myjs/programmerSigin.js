@@ -75,7 +75,6 @@ var vm = new Vue({
             $.ajax({
                 type: 'GET',
                 url: '/programmer/sigin',
-                //contentType : "application/json;charset=UTF-8",
                 data:{
                     //formItem:vm.formItem
                 userId:vm.formItem.userId,

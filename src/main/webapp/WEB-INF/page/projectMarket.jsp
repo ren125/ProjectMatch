@@ -10,7 +10,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
-    <title>个人信息</title>
+    <title>项目市场</title>
     <link href="${pageContext.request.contextPath}/static/bootstrap-3.3.5-dist/css/bootstrap.min.css" title="" rel="stylesheet" />
     <link title="" href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet" type="text/css"  />
     <link title="blue" href="${pageContext.request.contextPath}/static/css/dermadefault.css" rel="stylesheet" type="text/css"/>
@@ -95,7 +95,7 @@
                         <a href="/user/infoModify"><span class="sublist-icon glyphicon glyphicon-envelope"></span><span class="sub-title">信息修改</span></a> </li>
                     <li>
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />密码修改</div>--%>
-                        <a href="smsInfo.html"><span class="sublist-icon glyphicon glyphicon-credit-card"></span><span class="sub-title">密码修改</span></a></li>
+                        <a href="/user/passwordModify"><span class="sublist-icon glyphicon glyphicon-credit-card"></span><span class="sub-title">密码修改</span></a></li>
                     <li>
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />消息中心</div>--%>
                         <a href="/user/message"><span class="sublist-icon glyphicon glyphicon-bullhorn"></span><span class="sub-title">消息中心</span></a></li>
@@ -112,10 +112,10 @@
                         <a href="/user/suggest"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">平台推荐</span></a></li>
                     <li>
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />添加新闻</div>--%>
-                        <a href="/user/projectManage"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">项目管理</span></a></li>
+                        <a href="/user/projectManage"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">项目记录</span></a></li>
                     <li>
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />新闻管理</div>--%>
-                        <a href="/user/record"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">个人记录</span></a></li>
+                        <a href="/user/record"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">个人分析</span></a></li>
                 </ul>
             </div>
         </div>

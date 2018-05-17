@@ -6,12 +6,71 @@
         work_experience, over_score
     </sql>
 
+    <insert id="insertNewInvite">
+        INSERT INTO project_invite
+        VALUES (#{eId}, #{proId}, #{pId}, #{inviteDate})
+    </insert>
     <select id="selectProjectInvite" resultType="map">
-        SELECT project_invite.e_id,project_invite.invite_date,project.pro_field,
-        project.pro_lastdate,project.pro_money,project.pro_name,project.pro_overview,project.pro_skill1,project.pro_skill2
+        SELECT project_invite.e_id, project_invite.invite_date, project.pro_id, project.pro_field,
+        project.pro_lastdate,project.pro_money,project.pro_name,project.pro_overview,project.pro_satus,project.pro_skill1,project.pro_skill2
         FROM project_invite , project
         WHERE  project_invite.p_id = #{pId,jdbcType=VARCHAR}
         AND project_invite.pro_id = project.pro_id
+    </select>
+
+    <delete id="deleteProjectInvite">
+        DELETE FROM project_invite WHERE project_invite.p_id = #{pId,jdbcType=VARCHAR}
+        AND project_invite.pro_id = #{proId,jdbcType=INTEGER}
+    </delete>
+
+    <select id="selectByKey" resultType="java.lang.Integer">
+        SELECT COUNT(*) form project_invite
+        WHERE project_invite.p_id = #{pId,jdbcType=VARCHAR}
+        AND project_invite.pro_id = #{proId,jdbcType=INTEGER}
+    </select>
+
+    <insert id="insertProjectApply">
+        INSERT INTO programmer_apply
+        VALUES (#{pId,jdbcType=VARCHAR}, #{proId,jdbcType=INTEGER}, #{applyDate,jdbcType=TIMESTAMP}, #{eId,jdbcType=VARCHAR})
+    </insert>
+    <select id="selectProjectApply" resultType="map">
+        SELECT programmer_apply.e_id, programmer_apply.apply_date, project.pro_id, project.pro_field,
+        project.pro_lastdate,project.pro_money,project.pro_name,project.pro_overview,project.pro_satus,project.pro_skill1,project.pro_skill2
+        FROM programmer_apply , project
+        WHERE  programmer_apply.p_id = #{pId,jdbcType=VARCHAR}
+        AND programmer_apply.pro_id = project.pro_id
+    </select>
+    <delete id="deleteProjectApply">
+        DELETE FROM programmer_apply
+        WHERE pro_id = #{proId,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insertProjectConfirm">
+        INSERT INTO confirm()
+        VALUES (#{proId,jdbcType=INTEGER}, #{eId,jdbcType=VARCHAR}, #{pId,jdbcType=VARCHAR}, #{confirmDate,jdbcType=TIMESTAMP})
+    </insert>
+    <select id="selectProjectConfirm" resultType="map">
+        SELECT confirm.e_id, confirm.confirm_date, project.pro_id, project.pro_field,
+        project.pro_lastdate,project.pro_money,project.pro_name,project.pro_overview,project.pro_satus,project.pro_skill1,project.pro_skill2
+        FROM confirm , project
+        WHERE  confirm.p_id = #{pId,jdbcType=VARCHAR}
+        AND confirm.pro_id = project.pro_id
+    </select>
+    <delete id="deleteProjectConfirm">
+        DELETE FROM confirm
+        WHERE pro_id = #{proId,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insertProjectComplete">
+        INSERT INTO complete
+        VALUES (#{proId,jdbcType=INTEGER}, #{eId,jdbcType=VARCHAR}, #{pId,jdbcType=VARCHAR}, #{completeDate,jdbcType=TIMESTAMP})
+    </insert>
+    <select id="selectProjectComplete" resultType="map">
+        SELECT complete.e_id, complete.complete_date, project.pro_id, project.pro_field,
+        project.pro_lastdate,project.pro_money,project.pro_name,project.pro_overview,project.pro_satus,project.pro_skill1,project.pro_skill2
+        FROM complete , project
+        WHERE  complete.p_id = #{pId,jdbcType=VARCHAR}
+        AND complete.pro_id = project.pro_id
     </select>
 
 </mapper>

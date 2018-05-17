@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: 12571
+  User: renzhuo
   Date: 2018/4/13
   Time: 14:45
   To change this template use File | Settings | File Templates.
@@ -111,10 +111,10 @@
                         <a href="/user/suggest"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">平台推荐</span></a></li>
                     <li>
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />添加新闻</div>--%>
-                        <a href="/user/projectManage"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">项目管理</span></a></li>
+                        <a href="/user/projectManage"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">项目记录</span></a></li>
                     <li>
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />新闻管理</div>--%>
-                        <a href="/user/record"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">个人记录</span></a></li>
+                        <a href="/user/record"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">个人分析</span></a></li>
                 </ul>
             </div>
         </div>

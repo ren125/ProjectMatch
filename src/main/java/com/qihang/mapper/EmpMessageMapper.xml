@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qihang.dao.EmpMessageDao" >
+    <select id="selectProjectApply" resultType="map">
+        SELECT pro_id,pro_name
+        FROM project
+        WHERE pro_employer = #{eId,jdbcType=VARCHAR}
+         AND pro_satus = 1
+    </select>
+
+    <select id="selectProgrammer" resultType="map">
+        SELECT d.p_id,apply_date,d.p_name,d.p_sex,d.p_age,d.education,d.p_phone,d.p_email,
+        d.hoursalary,d.work_field,d.work_experience,d.over_score,d.skill1_id,d.skill2_id from
+        (select *
+        from programmer natural join (
+        select a.p_id,a.skill_id skill1_id,b.skill_id skill2_id
+        from programmerskill a,programmerskill b
+        where a.p_id = b.p_id and a.skill_id &lt; b.skill_id
+        ) as c) as d,programmer_apply
+        WHERE programmer_apply.pro_id =#{proId,jdbcType=VARCHAR} AND programmer_apply.p_id = d.p_id
+    </select>
+
+</mapper>

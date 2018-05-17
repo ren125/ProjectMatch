@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: renzhuo
-  Date: 2018/4/21
-  Time: 13:00
+  Date: 2018/5/6
+  Time: 13:11
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,7 +10,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
-    <title>消息中心</title>
+    <title>项目推荐</title>
     <link href="${pageContext.request.contextPath}/static/bootstrap-3.3.5-dist/css/bootstrap.min.css" title="" rel="stylesheet" />
     <link title="" href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet" type="text/css"  />
     <link title="blue" href="${pageContext.request.contextPath}/static/css/dermadefault.css" rel="stylesheet" type="text/css"/>
@@ -21,24 +21,75 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/iview-min.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/iview.css">
     <style>
-        .ivu-form-item-label{
-            font-size: 14px !important;
+        .project1{
+            margin-left: 30px;
+            margin-right: 30px;
+            padding-left: 40px;
+            margin-top: 20px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            background-color: #f9f9f8;
         }
-        .ivu-input{
-            font-size: 14px !important;
+        .content-head {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+            margin-bottom: 6px;
         }
-        .ivu-input-number-input{
-            font-size: 14px !important;
+        .content-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333333;
+            margin-right: 10px;
+            padding-left: 2px;
         }
-        .ivu-select-single .ivu-select-selection .ivu-select-placeholder, .ivu-select-single .ivu-select-selection .ivu-select-selected-value{
-            font-size: 14px !important;
+        .content-button {
+            font-size: 14px;
+            color: #666666;
         }
-        .ivu-select-input{
-            font-size: 14px !important;
+        .content-middle {
+            display: flex;
+            flex-direction: row;
+            text-align: left;
+            margin-top: 10px;
         }
-        .ivu-btn{
-            font-size: 14px !important;
+        .con-table1, .con-table2, .con-table3, .con-table4 {
+            width: 100%;
         }
+        .content-middle thead {
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .content-middle thead .col5 {
+            font-size: 14px;
+            font-weight: normal;
+        }
+        .content-middle tbody {
+            font-size: 14px;
+            color: #666666;
+        }
+        .col1 {
+            width: 10%;
+        }
+        .col2 {
+            width: 10%;
+        }
+        .col3 {
+            width: 12%;
+        }
+        .col4 {
+            width: 18%;
+        }
+        .col5 {
+            width: 10%
+        }
+        .col6 {
+            width: 10%
+        }
+        .col7 {
+            width: 15%
+        }
+
         .ivu-card-head p{
             font-size: 16px;
         }
@@ -47,9 +98,6 @@
         }
         i.ivu-icon-ios-arrow-right{
             margin-top: 8px;
-        }
-        .ivu-page-options-elevator input{
-            font-size: 14px;
         }
     </style>
 </head>
@@ -96,9 +144,9 @@
         <!-- <div class="sidebar-fold"><span class="glyphicon glyphicon-menu-hamburger"></span></div> -->
         <div class="subNavBox">
             <div class="sBox">
-                <div class="subNav sublist-down"><span class="title-icon glyphicon glyphicon-chevron-down"></span><span class="sublist-title">用户中心</span>
+                <div class="subNav sublist-up"><span class="title-icon glyphicon glyphicon-chevron-up"></span><span class="sublist-title">用户中心</span>
                 </div>
-                <ul class="navContent" style="display:block">
+                <ul class="navContent" style="display:none">
                     <li>
                         <%-- class="active"<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />个人信息</div>--%>
                         <a href="/user/info"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">个人信息</span></a> </li>
@@ -108,18 +156,18 @@
                     <li>
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />密码修改</div>--%>
                         <a href="/user/passwordModify"><span class="sublist-icon glyphicon glyphicon-credit-card"></span><span class="sub-title">密码修改</span></a></li>
-                    <li class="active">
+                    <li>
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />消息中心</div>--%>
                         <a href="/user/message"><span class="sublist-icon glyphicon glyphicon-bullhorn"></span><span class="sub-title">消息中心</span></a></li>
                 </ul>
             </div>
             <div class="sBox">
-                <div class="subNav sublist-up"><span class="title-icon glyphicon glyphicon-chevron-up"></span><span class="sublist-title">项目匹配</span></div>
-                <ul class="navContent" style="display:none">
+                <div class="subNav sublist-down"><span class="title-icon glyphicon glyphicon-chevron-down"></span><span class="sublist-title">项目匹配</span></div>
+                <ul class="navContent" style="display:block">
                     <li>
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />添加新闻</div>--%>
                         <a href="/user/projectMarket"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">项目市场</span></a></li>
-                    <li>
+                    <li class="active">
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />添加新闻</div>--%>
                         <a href="/user/suggest"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">平台推荐</span></a></li>
                     <li>
@@ -164,21 +212,18 @@
         })
     </script>
     <div id="right-part" class="right-product right-off">
-        <div id="container">
-            <Card style="width:100%;height: 100%" :bordered="false" :shadow=false>
-                <p slot="title">雇主邀请消息列表</p>
-                <i-table style="height:525px;" border :columns="columns" :data="datas" highlight-row></i-table>
-                <div style="float: right;margin-top: 10px;">
-                    <Page :total="totalPage" :current="1" @on-change="changePage" show-elevator></Page>
-                </div>
+        <div id = "container">
+            <Card style="width:100%;height: 100% " :bordered="false" :shadow=false>
+                <p slot="title">最适合您的五个项目</p>
+                <i-table style="height: 430px" :columns="columns" :data="datas" no-data-text = "没有满足条件的项目"></i-table>
             </Card>
         </div>
-        <div id="dialog" style="display: none"></div>
     </div>
 </div>
-<script src="${pageContext.request.contextPath}/static/js/myjs/message.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/myjs/projectRecommend.js"></script>
 </body>
 
 </html>
 <%--<i-table border :columns="columns7" :data="data6"></i-table>--%>
 <%--<script src="../../static/js/myjs/projectTable.js"></script>--%>
+

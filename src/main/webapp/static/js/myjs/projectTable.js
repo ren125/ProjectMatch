@@ -203,7 +203,33 @@ var vm = new Vue({
             },
             //申请项目
             choose:function(index) {
-                alert("申请项目")
+                this.$Modal.confirm({
+                    content:"您确认申请该项目？",
+                    onOk:function () {
+                        $.ajax({
+                            type: "POST",
+                            url: "/programmer/applyProject",
+                            data:{
+                                userId:$("#userId").text(),
+                                proId:vm.datas[index].proId,
+                                eId:vm.datas[index].proEmployer
+                            },
+                            dataType:"json",
+                            success: function (data) {
+                                if(data===true){
+                                    vm.tableDataInit();
+                                    alert("申请成功！")
+                                }else{
+                                    alert("您已申请该项目！")
+                                }
+
+                            },
+                            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                                alert("服务器出错");
+                            }
+                        })
+                    }
+                })
             },
             //查询项目
             selectPJ:function(){

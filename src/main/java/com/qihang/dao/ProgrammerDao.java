@@ -3,10 +3,13 @@ package com.qihang.dao;
 import com.qihang.pojo.Programmer;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public interface ProgrammerDao {
+    ArrayList<Map> selectAllProgrammer();
+
     int deleteByPrimaryKey(String pId);
 
     int insert(Programmer record);
@@ -26,4 +29,6 @@ public interface ProgrammerDao {
     int updateByPrimaryKeySelective(Programmer record);
 
     int updateByPrimaryKey(Programmer record);
+
+    int updateScore(@Param("overScore") double overScore,@Param("pId") String pId);
 }

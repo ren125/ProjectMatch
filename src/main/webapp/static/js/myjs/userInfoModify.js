@@ -108,7 +108,6 @@ var vm = new Vue({
                 data:{
                     //formItem:vm.formItem
                     userId:vm.formItem.userId,
-                    password:vm.formItem.password,
                     name:vm.formItem.name,
                     sex:vm.formItem.sex,
                     age:vm.formItem.age,
@@ -133,9 +132,6 @@ var vm = new Vue({
                     alert("服务器错误，修改失败");
                 }
             })
-        },
-        cancel:function () {
-            window.location.href="../../index.jsp";
         },
         emailSearch:function (value) {
             vm.emailData = !value || value.indexOf('@') >= 0 ? [] : [

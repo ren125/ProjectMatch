@@ -121,10 +121,10 @@
                         <a href="/user/suggest"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">平台推荐</span></a></li>
                     <li>
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />添加新闻</div>--%>
-                        <a href="/user/projectManage"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">项目管理</span></a></li>
+                        <a href="/user/projectManage"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">项目记录</span></a></li>
                     <li>
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />新闻管理</div>--%>
-                        <a href="/user/record"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">个人记录</span></a></li>
+                        <a href="/user/record"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">个人分析</span></a></li>
                 </ul>
             </div>
         </div>
@@ -218,7 +218,7 @@
                     </form-item>
                     <form-item label="综合评价(不可修改)">
                         <%--<i-input v-model="formItem.experience"  placeholder="请输入您的工作经验的年限"></i-input>--%>
-                        <Rate style="margin-top: -7px;" disabled v-model="formItem.score">
+                        <Rate style="margin-top: -7px;" disabled allow-half v-model="formItem.score">
                         </Rate>
                         <span style="color: #f5a623;font-size: 18px;margin-left: 5px;">{{formItem.score}}</span>
                     </form-item>

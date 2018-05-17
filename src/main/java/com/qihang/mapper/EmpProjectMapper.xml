@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qihang.dao.EmpProjectDao" >
+    <select id="selectProject1" resultType="map">
+        SELECT *
+        FROM project
+        WHERE pro_employer = #{eId,jdbcType=VARCHAR}
+         AND pro_satus = 1
+    </select>
+    <select id="selectProject2" resultType="map">
+        SELECT confirm.p_id, confirm.confirm_date, project.pro_id, project.pro_field,
+        project.pro_lastdate,project.pro_money,project.pro_name,project.pro_overview,project.pro_satus,project.pro_skill1,project.pro_skill2
+        FROM confirm , project
+        WHERE  confirm.e_id = #{eId,jdbcType=VARCHAR}
+        AND confirm.pro_id = project.pro_id
+    </select>
+    <select id="selectProject3" resultType="map">
+        SELECT complete.p_id, complete.complete_date, project.pro_id, project.pro_field,
+        project.pro_lastdate,project.pro_money,project.pro_name,project.pro_overview,project.pro_satus,project.pro_skill1,project.pro_skill2
+        FROM complete , project
+        WHERE  complete.e_id = #{eId,jdbcType=VARCHAR}
+        AND complete.pro_id = project.pro_id
+    </select>
+</mapper>

@@ -24,7 +24,7 @@ public class ProjectController {
                                  @RequestParam String skill,
                                  @RequestParam String satus){
         HashMap hashMap = new HashMap();
-        //从数据库查询所有项目
+        //查询所有项目
         ArrayList<Project> arrayList = projectService.selectProject();
 
         //按领域筛选
@@ -47,16 +47,15 @@ public class ProjectController {
                 }
             }
         }
+
         //按项目状态筛选
-        if(!satus.equals("")){
-            String[] satusChoosed = satus.split(",");
-            for(int i = 0;i < arrayList.size();i++) {
-                if(!contain(satusChoosed,arrayList.get(i).getProSatus())) {
-                    arrayList.remove(i);
-                    i--;
-                }
+        for(int i = 0;i < arrayList.size();i++) {
+            if(!arrayList.get(i).getProSatus().equals("可申请")) {
+                arrayList.remove(i);
+                i--;
             }
         }
+
         //按酬劳筛选
         if(!moneyValue1.equals("") && !moneyValue2.equals("")){
             double value1 = Double.parseDouble(moneyValue1);

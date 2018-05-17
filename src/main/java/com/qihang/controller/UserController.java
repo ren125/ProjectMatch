@@ -1,9 +1,5 @@
 package com.qihang.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.qihang.pojo.Project;
-import com.qihang.pojo.user;
-import com.qihang.services.userService;
 //import com.qihang.services.ProjectService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-    @Autowired
-    private userService userService;
     //private ProjectService projectService;
 
     @RequestMapping("/test")
@@ -32,14 +26,6 @@ public class UserController {
     @RequestMapping("/start")
     public String start(Model model){
         return "start";
-    }
-
-    @RequestMapping("/query")
-    public String query(@RequestParam(value = "username",required = true) String username, Model model){
-        user user = new user();
-        user = userService.querybyUsername(username);
-        model.addAttribute("user",user);
-        return "test";
     }
 
     @RequestMapping("/info")
@@ -68,17 +54,14 @@ public class UserController {
         return "message";
     }
 
+    @RequestMapping("/suggest")
+    public String suggest(){
+        return "projectRecommend";
+    }
 
-//    @RequestMapping(value = "/showPJ",method = RequestMethod.GET)
-//    @ResponseBody
-//    public String showPJ(){
-//        Project[] projects = projectService.queryProject();
-//        if(projects==null){
-//            return "";
-//        }
-//        else{
-//            return JSON.toJSONString(projects);
-//        }
-//    }
-
+    @RequestMapping("/projectManage")
+    public String projectManage(){
+        return "projectRecord";
+    }
+    
 }

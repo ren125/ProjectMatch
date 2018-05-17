@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: renzhuo
-  Date: 2018/4/21
-  Time: 13:00
+  Date: 2018/4/25
+  Time: 15:44
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,7 +10,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
-    <title>消息中心</title>
+    <title>起始页</title>
     <link href="${pageContext.request.contextPath}/static/bootstrap-3.3.5-dist/css/bootstrap.min.css" title="" rel="stylesheet" />
     <link title="" href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet" type="text/css"  />
     <link title="blue" href="${pageContext.request.contextPath}/static/css/dermadefault.css" rel="stylesheet" type="text/css"/>
@@ -21,35 +21,22 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/iview-min.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/iview.css">
     <style>
-        .ivu-form-item-label{
-            font-size: 14px !important;
+        #right-part{
+            background-size: 100% 100%;
+            -moz-background-size: 100% 100%;
+            -webkit-background-size: 100% 100%;
+            background-image: url("/static/images/timg.jpg");
+            background-repeat: no-repeat;
         }
-        .ivu-input{
-            font-size: 14px !important;
+        .welcome{
+            font-size: 36px;
+            margin-left: 85px;
+            margin-top: 5px;
         }
-        .ivu-input-number-input{
-            font-size: 14px !important;
-        }
-        .ivu-select-single .ivu-select-selection .ivu-select-placeholder, .ivu-select-single .ivu-select-selection .ivu-select-selected-value{
-            font-size: 14px !important;
-        }
-        .ivu-select-input{
-            font-size: 14px !important;
-        }
-        .ivu-btn{
-            font-size: 14px !important;
-        }
-        .ivu-card-head p{
-            font-size: 16px;
-        }
-        i.ivu-icon-ios-arrow-left{
-            margin-top: 8px;
-        }
-        i.ivu-icon-ios-arrow-right{
-            margin-top: 8px;
-        }
-        .ivu-page-options-elevator input{
-            font-size: 14px;
+        .welcome2{
+            font-size: 36px;
+            margin-left: 90px;
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -58,7 +45,7 @@
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav pull-left logoleft">
             <span class="logotitle">人才-项目匹配系统</span>
-            <span class="juese">人才界面</span>
+            <span class="juese">雇主界面</span>
         </ul>
 
         <ul class="nav navbar-nav pull-right">
@@ -82,9 +69,9 @@
                     <li><a href="#">博客</a></li>
                 </ul>
             </li>
-            <li class="dropdown li-border"><a id="userId" class="dropdown-toggle mystyle-color" data-toggle="dropdown"><%= session.getAttribute("userId")%><span class="caret"></span></a>
+            <li class="dropdown li-border"><a id="userId" class="dropdown-toggle mystyle-color" data-toggle="dropdown"><%= session.getAttribute("empId")%><span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="/programmer/sigout">退出</a></li>
+                    <li><a href="/employer/sigout">退出</a></li>
                     <%--/programmer/sigout--%>
                 </ul>
             </li>
@@ -96,38 +83,37 @@
         <!-- <div class="sidebar-fold"><span class="glyphicon glyphicon-menu-hamburger"></span></div> -->
         <div class="subNavBox">
             <div class="sBox">
-                <div class="subNav sublist-down"><span class="title-icon glyphicon glyphicon-chevron-down"></span><span class="sublist-title">用户中心</span>
+                <div class="subNav sublist-up"><span class="title-icon glyphicon glyphicon-chevron-up"></span><span class="sublist-title">用户中心</span>
                 </div>
-                <ul class="navContent" style="display:block">
-                    <li>
-                        <%-- class="active"<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />个人信息</div>--%>
-                        <a href="/user/info"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">个人信息</span></a> </li>
+                <ul class="navContent" style="display:none">
                     <li>
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />信息修改</div>--%>
-                        <a href="/user/infoModify"><span class="sublist-icon glyphicon glyphicon-envelope"></span><span class="sub-title">信息修改</span></a> </li>
+                        <a href="/user2/infoModify"><span class="sublist-icon glyphicon glyphicon-envelope"></span><span class="sub-title">信息修改</span></a> </li>
                     <li>
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />密码修改</div>--%>
-                        <a href="/user/passwordModify"><span class="sublist-icon glyphicon glyphicon-credit-card"></span><span class="sub-title">密码修改</span></a></li>
-                    <li class="active">
+                        <a href="/user2/passwordModify"><span class="sublist-icon glyphicon glyphicon-credit-card"></span><span class="sub-title">密码修改</span></a></li>
+                    <li>
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />消息中心</div>--%>
-                        <a href="/user/message"><span class="sublist-icon glyphicon glyphicon-bullhorn"></span><span class="sub-title">消息中心</span></a></li>
+                        <a href="/user2/message"><span class="sublist-icon glyphicon glyphicon-bullhorn"></span><span class="sub-title">消息中心</span></a></li>
                 </ul>
             </div>
             <div class="sBox">
-                <div class="subNav sublist-up"><span class="title-icon glyphicon glyphicon-chevron-up"></span><span class="sublist-title">项目匹配</span></div>
+                <div class="subNav sublist-up"><span class="title-icon glyphicon glyphicon-chevron-up"></span><span class="sublist-title">人才匹配</span></div>
                 <ul class="navContent" style="display:none">
                     <li>
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />添加新闻</div>--%>
-                        <a href="/user/projectMarket"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">项目市场</span></a></li>
+                        <a href="/user2/publishProject"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">项目发布</span></a></li>
                     <li>
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />添加新闻</div>--%>
-                        <a href="/user/suggest"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">平台推荐</span></a></li>
+                        <a href="/user2/programmerMarket"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">人才市场</span></a></li>
                     <li>
                         <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />添加新闻</div>--%>
-                        <a href="/user/projectManage"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">项目记录</span></a></li>
+                        <a href="/user2/suggest"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">平台推荐</span></a></li>
                     <li>
-                        <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />新闻管理</div>--%>
-                        <a href="/user/record"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">个人分析</span></a></li>
+                        <a href="/user2/projectEvaluate"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">项目评价</span></a></li>
+                    <li>
+                        <%--<div class="showtitle" style="width:100px;"><img src="img/leftimg.png" />添加新闻</div>--%>
+                        <a href="/user2/projectManage"><span class="sublist-icon glyphicon glyphicon-user"></span><span class="sub-title">我的项目</span></a></li>
                 </ul>
             </div>
         </div>
@@ -164,19 +150,19 @@
         })
     </script>
     <div id="right-part" class="right-product right-off">
-        <div id="container">
-            <Card style="width:100%;height: 100%" :bordered="false" :shadow=false>
-                <p slot="title">雇主邀请消息列表</p>
-                <i-table style="height:525px;" border :columns="columns" :data="datas" highlight-row></i-table>
-                <div style="float: right;margin-top: 10px;">
-                    <Page :total="totalPage" :current="1" @on-change="changePage" show-elevator></Page>
-                </div>
-            </Card>
-        </div>
-        <div id="dialog" style="display: none"></div>
+        <div class="welcome">欢</div>
+        <div class="welcome">迎&nbsp开</div>
+        <div class="welcome">入&nbsp启</div>
+        <div class="welcome">驻&nbsp您</div>
+        <div class="welcome">启&nbsp的</div>
+        <div class="welcome">航&nbsp梦</div>
+        <div class="welcome">号&nbsp想</div>
+        <%--<div class="welcome">&nbsp&nbsp&nbsp&nbsp&nbsp启</div>--%>
+        <%--<div class="welcome">&nbsp&nbsp&nbsp&nbsp&nbsp航</div>--%>
+        <div class="welcome2">&nbsp&nbsp&nbsp&nbsp之</div>
+        <div class="welcome2">&nbsp&nbsp&nbsp&nbsp旅</div>
     </div>
 </div>
-<script src="${pageContext.request.contextPath}/static/js/myjs/message.js"></script>
 </body>
 
 </html>

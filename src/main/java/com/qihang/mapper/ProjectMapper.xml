@@ -26,4 +26,20 @@
 
     </select>
 
+    <insert id="insertProject">
+        INSERT INTO project(pro_name, pro_employer, pro_field, pro_skill1, pro_skill2, pro_money, pro_lastdate,pro_overview,pro_satus)
+        VALUES (#{proName}, #{proEmp}, #{proField}, #{proSkill1}, #{proSkill2}, #{proMoney}, #{proLastDate}, #{proOverview}, #{proStatus})
+    </insert>
+
+    <update id="updateStatus">
+        update project
+        SET pro_satus = #{proStatus}
+        WHERE pro_id = #{proId}
+    </update>
+
+    <select id="selectById" resultType="map">
+        SELECT * FROM project
+        WHERE pro_id = #{proId}
+    </select>
+
 </mapper>

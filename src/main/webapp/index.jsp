@@ -63,7 +63,7 @@
                 </i-form>
             </tab-pane>
             <tab-pane label="我是雇主">
-                <i-form ref="formInline" :model="formInline2" :rules="ruleInline2">
+                <i-form ref="formInline2" :model="formInline2" :rules="ruleInline">
                     <form-item prop="username2">
                         <i-input type="text" v-model="formInline2.username" placeholder="Username">
                             <Icon type="ios-person-outline" slot="prepend"></Icon>

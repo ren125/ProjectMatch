@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qihang.dao.EmployerDao" >
+    <select id="selectByPrimaryKey" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM employer
+        WHERE e_id = #{eId,jdbcType=VARCHAR}
+        AND e_password = #{password,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insertEmployer">
+        INSERT INTO employer
+        VALUES (#{eId,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+         #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR})
+    </insert>
+
+    <select id="selectById" resultType="map">
+        SELECT *
+        FROM employer
+        WHERE e_id = #{eId,jdbcType=VARCHAR}
+    </select>
+
+    <update id="updateById">
+        UPDATE employer
+        SET e_name = #{eName,jdbcType=VARCHAR},e_phone = #{ePhone,jdbcType=VARCHAR},e_email = #{eEmail,jdbcType=VARCHAR}
+        WHERE e_id = #{eId,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updatePassword">
+        UPDATE employer
+        SET e_password = #{password,jdbcType=VARCHAR}
+        WHERE e_id = #{eId,jdbcType=VARCHAR}
+    </update>
+</mapper>
